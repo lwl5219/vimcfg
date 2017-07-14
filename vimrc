@@ -240,7 +240,7 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <F1> :call NumberToggle()<cr>
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
@@ -339,9 +339,7 @@ nnoremap gj j
 
 " F1 - F6 设置
 
-" F1 废弃这个键,防止调出系统帮助
-" I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
-noremap <F1> <Esc>"
+" F1 切换相对行号,绝对行号
 
 " F2 行号开关，用于鼠标复制代码用
 " 为方便复制，用<F2>开启/关闭行号显示:
@@ -497,8 +495,7 @@ nnoremap <silent> <leader>tt :execute 'tabnext ' . g:last_active_tab<cr>
 autocmd TabLeave * let g:last_active_tab = tabpagenr()
 
 " 新建tab  Ctrl+t
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
+nnoremap <leader>nt     :tabnew<cr>
 
 
 " => 选中及操作改键

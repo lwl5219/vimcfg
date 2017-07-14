@@ -51,6 +51,12 @@ Plug 'docunext/closetag.vim', { 'for': ['html', 'xml'] }
 " 快速注释
 Plug 'scrooloose/nerdcommenter'
 
+" gdb for vim
+" Plug 'vim-scripts/Conque-GDB'
+
+" cscope 查找函数引用
+Plug 'vim-scripts/cscope.vim'
+
 
 " 快速加入修改环绕字符
 " for repeat -> enhance surround.vim, . to repeat command
