@@ -72,6 +72,7 @@ if $FOR_NEOVIM; then
     lnif $CURRENT_DIR/vimrc $CURRENT_DIR/init.vim
 fi
 
+
 echo "Step3: update/install plugins using Vim-plug"
 system_shell=$SHELL
 export SHELL="/bin/sh"
@@ -82,6 +83,7 @@ else
 fi
 export SHELL=$system_shell
 
+exit 0
 
 echo "Step4: compile YouCompleteMe"
 echo "It will take a long time, just be patient!"
