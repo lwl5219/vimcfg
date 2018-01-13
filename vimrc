@@ -655,8 +655,8 @@ set background=dark
 set t_Co=256
 
 " colorscheme solarized
-colorscheme molokai
-" colorscheme desert
+colorscheme dracula
+" colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致

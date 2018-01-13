@@ -56,7 +56,7 @@ Plug 'docunext/closetag.vim', { 'for': ['html', 'xml'] }
 Plug 'scrooloose/nerdcommenter'
 
 " gdb for vim
-" Plug 'vim-scripts/Conque-GDB'
+Plug 'vim-scripts/Conque-GDB'
 
 " cscope 查找函数引用
 Plug 'vim-scripts/cscope.vim'
@@ -81,7 +81,9 @@ Plug 'Lokaltog/vim-easymotion'
 " quickscope
 Plug 'unblevable/quick-scope'
 
-Plug 'vim-scripts/matchit.zip'
+" 成对标签跳转,例如html和xml的标签跳转
+" Plug 'vim-scripts/matchit.zip'
+
 " signature
 " 显示marks - 方便自己进行标记和跳转
 " m[a-zA-Z] add mark
@@ -146,6 +148,8 @@ Plug 'altercation/vim-colors-solarized'
 " molokai
 " 主题 molokai
 Plug 'tomasr/molokai'
+" 主题 dracula
+Plug 'dracula/vim'
 
 
 " nav
@@ -264,7 +268,7 @@ if count(g:bundle_groups, 'html')
 endif
 
 if count(g:bundle_groups, 'nginx')
-    " Plug 'evanmiller/nginx-vim-syntax'
+    Plug 'evanmiller/nginx-vim-syntax'
 endif
 
 
@@ -391,6 +395,9 @@ endif
     let g:ycm_key_list_stop_completion = ['<CR>']
 
     "let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
+
+    ""python解释器路径"
+    let g:ycm_path_to_python_interpreter='/usr/bin/python'
 
     " 跳转到定义处, 分屏打开
     let g:ycm_goto_buffer_command = 'horizontal-split'
@@ -830,6 +837,11 @@ endif
 " }}}
 
 " nginx {{{
+" }}}
+
+" conque gdb {{{
+    let g:ConqueGdb_Leader = '<leader>g'
+    let g:ConqueGdb_Finish = g:ConqueGdb_Leader . 'f'
 " }}}
 
 " ####### temp #######
