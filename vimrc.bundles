@@ -17,7 +17,7 @@ filetype off " required! turn off
 " inspired by spf13, 自定义需要的插件集合
 if !exists('g:bundle_groups')
     " let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'shell']
-    let g:bundle_groups=['python', 'json', 'markdown', 'nginx', 'shell']
+    let g:bundle_groups=['json', 'markdown', 'html', 'javascript', 'css', 'shell']
 endif
 
 " ----------------------------------------------------------------------------
@@ -55,8 +55,6 @@ Plug 'docunext/closetag.vim', { 'for': ['html', 'xml'] }
 " 快速注释
 Plug 'scrooloose/nerdcommenter'
 
-" gdb for vim
-Plug 'vim-scripts/Conque-GDB'
 
 " cscope 查找函数引用
 Plug 'vim-scripts/cscope.vim'
@@ -200,22 +198,6 @@ if count(g:bundle_groups, 'python')
     let g:vim_isort_map = '<C-i>'
 endif
 
-if count(g:bundle_groups, 'php')
-    " piv
-    " shift-v可以查看函数手册 / leader-pd生成注释
-    Plug 'spf13/PIV'
-endif
-
-if count(g:bundle_groups, 'ruby')
-    Plug 'vim-ruby/vim-ruby'
-    Plug 'tpope/vim-rails'
-    " dir / dar
-    Plug 'nelstrom/vim-textobj-rubyblock'
-
-    " 有bug, 和当前有冲突, 尚未解决, 不要打开 => TODO: solve this problem
-    " Plug 'tpope/vim-endwise'
-endif
-
 if count(g:bundle_groups, 'javascript')
     " javascript
     " 注意: syntax这个插件要放前面
@@ -256,12 +238,6 @@ if count(g:bundle_groups, 'css')
     " Plug 'lilydjwg/colorizer'
 endif
 
-if count(g:bundle_groups, 'less')
-    " ###### vim.less : less 自动更新##########
-    Plug 'groenewege/vim-less'
-    " autocmd BufWritePost *.less :!lessc % > %:p:r.css
-endif
-
 if count(g:bundle_groups, 'html')
     " ###### emmet HTML complete #########
     " Plug 'mattn/emmet-vim'
@@ -270,30 +246,6 @@ endif
 if count(g:bundle_groups, 'nginx')
     Plug 'evanmiller/nginx-vim-syntax'
 endif
-
-
-" this is just for beta version
-if count(g:bundle_groups, 'beta')
-    " indent
-    Plug 'nathanaelkane/vim-indent-guides'
-    " <leader>ig to trigger
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_auto_colors = 1
-    " autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-    " autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
-
-    " Plug 'robbles/logstash.vim'
-    " Plug 'ryanoasis/vim-devicons'
-    " Plug 'ekalinin/dockerfile.vim'
-
-    " Plug 'ConradIrwin/vim-bracketed-paste'
-    " Plug 'roxma/vim-paste-easy'
-
-
-endif
-
-
 " Add plugins to &runtimepath
 call plug#end()
 

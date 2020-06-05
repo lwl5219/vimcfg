@@ -144,7 +144,7 @@ set showcmd
 set showmode
 
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
-set scrolloff=7
+set scrolloff=3
 
 " set winwidth=79
 
@@ -207,11 +207,11 @@ set autoindent
 
 " tab相关变更
 " 设置Tab键的宽度        [等同的空格个数]
-set tabstop=4
+set tabstop=2
 " 每一次缩进对应的空格数
-set shiftwidth=4
+set shiftwidth=2
 " 按退格键时可以一次删掉 4 个空格
-set softtabstop=4
+set softtabstop=2
 " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
 set smarttab
 " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
@@ -655,8 +655,8 @@ set background=dark
 set t_Co=256
 
 " colorscheme solarized
-colorscheme dracula
-" colorscheme molokai
+" colorscheme dracula
+colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
