@@ -16,8 +16,7 @@ filetype off " required! turn off
 
 " inspired by spf13, 自定义需要的插件集合
 if !exists('g:bundle_groups')
-    " let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'shell']
-    let g:bundle_groups=['json', 'markdown', 'html', 'javascript', 'css', 'shell']
+    let g:bundle_groups=['html']
 endif
 
 " ----------------------------------------------------------------------------
@@ -49,7 +48,7 @@ Plug 'Valloric/YouCompleteMe'
 " 自动补全单引号，双引号等
 Plug 'Raimondi/delimitMate'
 " 自动补全html/xml标签
-Plug 'docunext/closetag.vim', { 'for': ['html', 'xml'] }
+Plug 'docunext/closetag.vim', { 'for': ['html', 'xml', 'rsb', 'rsd', 'rst'] }
 
 " quick edit
 " 快速注释
@@ -60,27 +59,17 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/cscope.vim'
 
 
-" 快速加入修改环绕字符
-" for repeat -> enhance surround.vim, . to repeat command
-Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 " trailingwhitespace
 " 快速去行尾空格 [, + <Space>]
 Plug 'bronson/vim-trailing-whitespace'
-" easyalign
-" 快速赋值语句对齐
-Plug 'junegunn/vim-easy-align'
 
 " quick movement
 " easymotion
 "更高效的移动 [,, + w/fx/h/j/k/l]
 Plug 'Lokaltog/vim-easymotion'
 
-" 更高效的行内移动, f/F/t/T, 才触发
-" quickscope
-Plug 'unblevable/quick-scope'
-
 " 成对标签跳转,例如html和xml的标签跳转
-" Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 
 " signature
 " 显示marks - 方便自己进行标记和跳转
@@ -91,10 +80,6 @@ Plug 'unblevable/quick-scope'
 " m.        add new mark just follow previous mark
 Plug 'kshenoy/vim-signature'
 
-" quick selection and edit
-" expandregion
-" 选中区块
-Plug 'terryma/vim-expand-region'
 " 多光标选中编辑
 " multiplecursors
 Plug 'terryma/vim-multiple-cursors'
@@ -112,25 +97,14 @@ Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
 " T - Lkie t but focus CtrlSF window instead of opened new tab.
 " q - Quit CtrlSF window.
 Plug 'dyng/ctrlsf.vim'
-" incsearch
-" Plug 'haya14busa/incsearch.vim'
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
 
-" quick run
-" quickrun
-Plug 'thinca/vim-quickrun'
-
-" git
-" fugitive
-Plug 'tpope/vim-fugitive'
-" gitgutter
-Plug 'airblade/vim-gitgutter'
-
-" gundo
+" undotree
 " edit history, 可以查看回到某个历史状态
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
+
+" js/html/css 格式化
+" todo
+Plug 'maksimr/vim-jsbeautify'
 
 " view
 " airline
@@ -158,16 +132,8 @@ Plug 'vim-ctrlspace/vim-ctrlspace'
 " tagbar
 Plug 'majutsushi/tagbar'
 
-" text object
-" 支持自定义文本对象
-Plug 'kana/vim-textobj-user'
-" 增加行文本对象: l   dal yal cil
-Plug 'kana/vim-textobj-line'
-" 增加文件文本对象: e   dae yae cie
-Plug 'kana/vim-textobj-entire'
-" 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
-Plug 'kana/vim-textobj-indent'
 
+" ################### 集合配置 ###################
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -212,30 +178,6 @@ if count(g:bundle_groups, 'javascript')
     " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖 `cd ~/.vim/bundle/tern_for_vim && npm install`
     " see https://github.com/marijnh/tern_for_vim
     " Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-endif
-
-
-if count(g:bundle_groups, 'coffeescript')
-    Plug 'kchmck/vim-coffee-script'
-endif
-
-" if count(g:bundle_groups, 'shell')
-    " Plug 'Shougo/vimshell.vim'
-" endif
-
-if count(g:bundle_groups, 'json')
-    " json
-    Plug 'elzr/vim-json', {'for': 'json'}
-endif
-
-if count(g:bundle_groups, 'css')
-    " css
-    " not work in iterm2 which termianl selection is not xterm-256, and it slow
-    " Plug 'ap/vim-css-color'
-
-    " 这个有坑, see issue https://github.com/wklken/k-vim/issues/49
-    " Plug 'gorodinskiy/vim-coloresque'
-    " Plug 'lilydjwg/colorizer'
 endif
 
 if count(g:bundle_groups, 'html')
@@ -434,18 +376,6 @@ endif
     map <leader><space> :FixWhitespace<cr>
 " }}}
 
-" easyalign {{{
-    vmap <Leader>a <Plug>(EasyAlign)
-    nmap <Leader>a <Plug>(EasyAlign)
-    if !exists('g:easy_align_delimiters')
-    let g:easy_align_delimiters = {}
-    endif
-    let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
-    " Default:
-    " If a delimiter is in a highlight group whose name matches any of the followings, it will be ignored.
-    let g:easy_align_ignore_groups = ['Comment', 'String']
-" }}}
-
 " ################### 快速移动 ###################
 
 " easymotion {{{
@@ -460,34 +390,7 @@ endif
 " }}}
 
 
-" quickscope {{{
-    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-    " macvim/gvim会有问题, 暂时注解
-    " let g:qs_first_occurrence_highlight_color = '#afff5f' " gui vim
-    " let g:qs_first_occurrence_highlight_color = 155       " terminal vim
-    " let g:qs_second_occurrence_highlight_color = '#5fffff'  " gui vim
-    " let g:qs_second_occurrence_highlight_color = 81         " terminal vim
-" }}}
-
 " ################### 快速选中 ###################
-
-" expandregion {{{
-    " map + <Plug>(expand_region_expand)
-    " map _ <Plug>(expand_region_shrink)
-    vmap v <Plug>(expand_region_expand)
-    vmap V <Plug>(expand_region_shrink)
-    " Extend the global default
-    if exists("*expand_region#custom_text_objects")
-        call expand_region#custom_text_objects({
-        \ 'a]' :1,
-        \ 'ab' :1,
-        \ 'aB' :1,
-        \ 'ii' :0,
-        \ 'ai' :0,
-        \ })
-    endif
-
-" }}}
 
 " multiplecursors {{{
     let g:multi_cursor_use_default_mapping=0
@@ -554,31 +457,8 @@ endif
         \ }
 " }}}
 
-" git.  git操作还是习惯命令行,vim里面处理简单diff编辑操作
-
-" fugitive {{{
-    " :Gdiff  :Gstatus :Gvsplit
-    nnoremap <leader>ge :Gdiff<CR>
-    " not ready to open
-    " <leader>gb maps to :Gblame<CR>
-    " <leader>gs maps to :Gstatus<CR>
-    " <leader>gd maps to :Gdiff<CR>  和现有冲突
-    " <leader>gl maps to :Glog<CR>
-    " <leader>gc maps to :Gcommit<CR>
-    " <leader>gp maps to :Git push<CR>
-" }}}
-
-" gitgutter {{{
-    " 同git diff,实时展示文件中修改的行
-    " 只是不喜欢除了行号多一列, 默认关闭,gs时打开
-    let g:gitgutter_map_keys = 0
-    let g:gitgutter_enabled = 0
-    let g:gitgutter_highlight_lines = 1
-    nnoremap <leader>gs :GitGutterToggle<CR>
-" }}}
-
-" gundo {{{
-    noremap <leader>h :GundoToggle<CR>
+" undotree {{{
+    noremap <leader>h :UndotreeToggle<CR>
 " }}}
 
 " ################### 显示增强 ###################
@@ -733,28 +613,6 @@ endif
 
 " ################### 语言相关 ###################
 
-" quickrun {{{
-    let g:quickrun_config = {
-    \   "_" : {
-    \       "outputter" : "message",
-    \   },
-    \}
-
-    let g:quickrun_no_default_key_mappings = 1
-    nmap <Leader>r <Plug>(quickrun)
-    map <F10> :QuickRun<CR>
-" }}}
-
-
-" pythonsyntax {{{
-    let python_highlight_all = 1
-" }}}
-
-" piv {{{
-    let g:DisableAutoPHPFolding = 1
-" }}}
-
-
 " vimgo {{{
     let g:go_highlight_functions = 1
     let g:go_highlight_methods = 1
@@ -779,41 +637,6 @@ endif
     let g:html_indent_inctags = "html,body,head,tbody"
     let g:html_indent_script1 = "inc"
     let g:html_indent_style1 = "inc"
-" }}}
-
-" json {{{
-    let g:vim_json_syntax_conceal = 0
-" }}}
-
-" css {{{
-" }}}
-
-" nginx {{{
-" }}}
-
-" conque gdb {{{
-    let g:ConqueGdb_Leader = '<leader>g'
-    let g:ConqueGdb_Finish = g:ConqueGdb_Leader . 'f'
-" }}}
-
-" ####### temp #######
-
-" beta {{{
-    " pip install yapf
-    " python code format
-    " format all file
-    autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
-    " format select block
-    autocmd FileType python vnoremap <leader>y :!yapf<Cr>
-
-    " Plug 'posva/vim-vue'
-
-    " Plug 'millermedeiros/vim-esformatter'
-    " will run esformatter after pressing <leader> followed by the 'e' and 's'
-    " keys
-    " nnoremap <silent> <leader>es :Esformatter<CR>
-    " vnoremap <silent> <leader>es :EsformatterVisual<CR>
-
 " }}}
 
 "------------------------------------------- end of configs --------------------------------------------
