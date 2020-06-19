@@ -1,0 +1,102 @@
+snippet rsb:set
+<rsb:set attr="${1}" value="${2}" />
+endsnippet
+
+
+snippet rsb:include
+<rsb:include file="${1}" />
+endsnippet
+
+snippet rsb:push
+<rsb:push item="${1}" />
+endsnippet
+
+snippet rsb:call
+<rsb:call op="${1}" in="${2}" out="${3}">
+</rsb:call>
+endsnippet
+
+snippet rsb:call2
+<rsb:call op="${1}" in="${2}" />
+endsnippet
+
+snippet rsb:if
+<rsb:if exp="${1}">
+	${2}
+</rsb:if>
+endsnippet
+
+snippet rsb:map
+<rsb:map from="${1}" to="${2}" map="*=*" />
+endsnippet
+
+snippet rsb:setm
+<rsb:setm item="${1}">
+</rsb:setm>
+endsnippet
+
+snippet rsb:try
+<rsb:try>
+<rsb:finally>
+</rsb:finally>
+</rsb:try>
+endsnippet
+
+snippet rsb:else
+<rsb:else>
+	${1}
+</rsb:else>
+endsnippet
+
+snippet rsb:catch
+<rsb:catch code="*">
+</rsb:catch>
+endsnippet
+
+snippet rsb:unset
+<rsb:unset item="${1}" />
+endsnippet
+
+snippet rsb:unset2
+<rsb:unset attr="${1}" />
+endsnippet
+
+snippet rsb:exist
+<rsb:exist attr="${1}">
+</rsb:exist>
+endsnippet
+
+snippet rsb:check
+<rsb:check attr="${1}">
+</rsb:check>
+endsnippet
+
+snippet rsb:break
+<rsb:break/>
+endsnippet
+
+snippet rsb:enum
+<rsb:enum list="${1}" sep="${2}">
+</rsb:enum>
+endsnippet
+
+snippet rsb:enum2
+<rsb:enum attr="${1}">
+</rsb:enum>
+endsnippet
+
+snippet rsb:render
+<rsb:render template="${1}" in="${2}" />
+endsnippet
+
+snippet rsb:select
+<rsb:select value="${1}">
+<rsb:case value="${2}">${3}</rsb:case>
+<rsb:default>${4}</rsb:default>
+</rsb:select>
+endsnippet
+
+snippet rsb:throw
+<rsb:throw code="${1}" desc="${2}" />
+endsnippet
+
