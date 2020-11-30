@@ -1,0 +1,142 @@
+
+" Change leader key
+let mapleader = ','
+let g:mapleader = ','
+
+" highlight matches with the last search pattern
+set hlsearch
+" message on the status line to show current mode
+set showmode
+" shwo(partial) command in the statu bar
+set showcmd
+" min number of columns to left and right of cursor
+set sidescrolloff = 3
+" show where search pattern typed so far matches
+set incsearch
+" ignore case in search paaterns
+set ignorecase
+" case sensitive when pattern is uppercase
+set smartcase
+set history=1000
+" show the line number relative to the line with
+set number relativenumber
+set ideamarks = true
+
+"=======================================
+" HotKey Settings
+"=======================================
+
+" smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Go to home and end using capitalized direction
+noremap H ^
+noremap L $
+
+" quickly enter command mode
+nnoremap ; :
+
+" move to line start and line end in command line
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" search use very magic
+nnoremap / /\v
+vnoremap / /\v
+
+" Keep search pattern at the center of the screen.
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" disable highlight search
+noremap <leader>/ :nohls<CR>
+
+" Copy to system clipboard
+vnoremap <leader>y "+y
+
+" select all
+map <leader>sa ggVG
+
+" select block
+nnoremap <leader>v V`}
+
+" select and highlight the last insert text
+nnoremap gv `[v`]
+
+" replace Esc with kj
+inoremap kj <Esc>
+
+" speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+" Swap ' ` in order to use ' to jump to the marked position
+nnoremap ' `
+nnoremap ` '
+
+" remap U to <C-r> for easier redo
+nnoremap U <C-r>
+
+"=======================================
+" HotKey Settings action
+"=======================================
+" <leader> used to call non-UI action
+" Navigate
+map <leader>h :action Back<CR>
+map <leader>l :action Forward<CR>
+" Search text in all files
+map <leader>ft :action FindInPath<CR>
+" Find Class & File & method
+map <leader>fc :action GotoClass<CR>
+map <leader>ff :action GotoFile<CR>
+map <leader>fm :action GotoSymbol<CR>
+" Open usage and file structure window
+map <leader>fu :action FindUsages<CR>
+map <leader>fs :action FileStructurePopup<CR>
+" Go to implementation
+map <leader>gi :action GotoImplementation<CR>
+map <leader>gs :action GotoSuperMethod<CR>
+map <leader>gd :action GotoDeclaration<CR>
+map <leader>gtd :action GotoTypeDeclaration<CR>
+" Bookmark
+map <leader>ma :action ShowBookmarks<CR>
+map <leader>mh :action GotoNextBookmark<CR>
+map <leader>ml :action GotoPreviousBookmark<CR>
+
+" code
+map <leader>sw :action SurroundWith<CR>
+" [ used to call UI action
+" Build & Run
+map [d :action Debug<CR>
+map [c :action Stop<CR>
+map [b :action ToggleLineBreakpoint<CR>
+
+
+"=======================================
+" Plugin Settings
+"=======================================
+" Enable easymotion
+" https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
+set easymotion
+" easymotion {{{
+" [,, + w/b  f/F/s  j/k  n/N]
+  map <Leader><Leader>j <Plug>(easymotion-j)
+  map <Leader><Leader>k <Plug>(easymotion-k)
+" }}}
+"
+" todo
+" set multiple-cursors
+" set highlightedyank
+
+
+"=======================================
+" Some notes
+"=======================================
+" Expand and Collapse
+"zo zc
