@@ -66,9 +66,6 @@ map <leader>sa ggVG
 " select block
 nnoremap <leader>v V`}
 
-" select and highlight the last insert text
-nnoremap gv `[v`]
-
 " replace Esc with kj
 inoremap kj <Esc>
 
@@ -88,8 +85,8 @@ nnoremap U <C-r>
 "=======================================
 " <leader> used to call non-UI action
 " Navigate
-map <leader>h :action Back<CR>
-map <leader>l :action Forward<CR>
+map <A-h> :action Back<CR>
+map <A-l> :action Forward<CR>
 " Search text in all files
 map <leader>ft :action FindInPath<CR>
 " Find Class & File & method
@@ -99,23 +96,25 @@ map <leader>fm :action GotoSymbol<CR>
 " Open usage and file structure window
 map <leader>fu :action FindUsages<CR>
 map <leader>fs :action FileStructurePopup<CR>
+map <leader>fp :action ShowFilePath<CR>
 " Go to implementation
-map <leader>gi :action GotoImplementation<CR>
-map <leader>gs :action GotoSuperMethod<CR>
-map <leader>gd :action GotoDeclaration<CR>
-map <leader>gtd :action GotoTypeDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gD :action GotoTypeDeclaration<CR>
 " Bookmark
-map <leader>ma :action ShowBookmarks<CR>
-map <leader>mh :action GotoNextBookmark<CR>
-map <leader>ml :action GotoPreviousBookmark<CR>
+nnoremap ma :action ShowBookmarks<CR>
+nnoremap mt :action ToggleBookmark<CR>
+nnoremap mh :action GotoNextBookmark<CR>
+nnoremap ml :action GotoPreviousBookmark<CR>
 
 " code
 map <leader>sw :action SurroundWith<CR>
 " [ used to call UI action
 " Build & Run
-map [d :action Debug<CR>
-map [c :action Stop<CR>
-map [b :action ToggleLineBreakpoint<CR>
+nnoremap [d :action Debug<CR>
+nnoremap [s :action Stop<CR>
+nnoremap [b :action ToggleLineBreakpoint<CR>
 
 
 "=======================================
@@ -124,13 +123,7 @@ map [b :action ToggleLineBreakpoint<CR>
 " Enable easymotion
 " https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
 set easymotion
-" easymotion {{{
-" [,, + w/b  f/F/s  j/k  n/N]
-  map <Leader><Leader>j <Plug>(easymotion-j)
-  map <Leader><Leader>k <Plug>(easymotion-k)
-" }}}
-"
-" todo
+" Todo
 " set multiple-cursors
 " set highlightedyank
 
