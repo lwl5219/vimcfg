@@ -17,20 +17,20 @@ set incsearch
 set ignorecase
 " case sensitive when pattern is uppercase
 set smartcase
-set history=1000
+set history = 1000
 " show the line number relative to the line with
 set number relativenumber
-set ideamarks = true
+set ideamarks
 
 "=======================================
 " HotKey Settings
 "=======================================
 
 " smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"  map <a-j> <C-W>j
+"  map <C-k> <C-W>k
+"  map <C-h> <C-W>h
+"  map <C-l> <C-W>l
 
 " Go to home and end using capitalized direction
 noremap H ^
@@ -38,10 +38,6 @@ noremap L $
 
 " quickly enter command mode
 nnoremap ; :
-
-" move to line start and line end in command line
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 
 " search use very magic
 nnoremap / /\v
@@ -73,9 +69,9 @@ inoremap kj <Esc>
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
-" Swap ' ` in order to use ' to jump to the marked position
-nnoremap ' `
-nnoremap ` '
+"  " Swap ' ` in order to use ' to jump to the marked position
+"  nnoremap ' `
+"  nnoremap ` '
 
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
@@ -85,36 +81,26 @@ nnoremap U <C-r>
 "=======================================
 " <leader> used to call non-UI action
 " Navigate
-map <A-h> :action Back<CR>
-map <A-l> :action Forward<CR>
-" Search text in all files
-map <leader>ft :action FindInPath<CR>
+map <C-h> :action Back<CR>
+map <C-l> :action Forward<CR>
 " Find Class & File & method
 map <leader>fc :action GotoClass<CR>
 map <leader>ff :action GotoFile<CR>
-map <leader>fm :action GotoSymbol<CR>
-" Open usage and file structure window
-map <leader>fu :action FindUsages<CR>
-map <leader>fs :action FileStructurePopup<CR>
-map <leader>fp :action ShowFilePath<CR>
+map <leader>fs :action GotoSymbol<CR>
 " Go to implementation
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gD :action GotoTypeDeclaration<CR>
+nnoremap gu :action FindUsages<CR>
+nnoremap gp :action ShowFilePath<CR>
 " Bookmark
 nnoremap ma :action ShowBookmarks<CR>
 nnoremap mt :action ToggleBookmark<CR>
-nnoremap mh :action GotoNextBookmark<CR>
-nnoremap ml :action GotoPreviousBookmark<CR>
-
 " code
 map <leader>sw :action SurroundWith<CR>
-" [ used to call UI action
 " Build & Run
-nnoremap [d :action Debug<CR>
-nnoremap [s :action Stop<CR>
-nnoremap [b :action ToggleLineBreakpoint<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
 
 
 "=======================================
@@ -123,13 +109,46 @@ nnoremap [b :action ToggleLineBreakpoint<CR>
 " Enable easymotion
 " https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
 set easymotion
-" Todo
-" set multiple-cursors
-" set highlightedyank
 
+"  https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+set NERDTree
+
+" https://github.com/terryma/vim-multiple-cursors
+" https://www.bilibili.com/video/BV1VA411L7Km?spm_id_from=333.999.0.0&vd_source=6e8e274aa93474f9f40ffc9b1b491285
+" Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors
+
+set highlightedyank
+
+" Commands: gr, grr
+set ReplaceWithRegister
+
+" https://www.bilibili.com/video/av246428035/?vd_source=6e8e274aa93474f9f40ffc9b1b491285
+" Commands: aa(an-argument) ia(inner-argument)
+set argtextobj
 
 "=======================================
-" Some notes
+" Conflict Keys
 "=======================================
-" Expand and Collapse
-"zo zc
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-C> a:ide
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-G> a:vim
+sethandler <C-H> a:vim
+sethandler <C-K> a:vim
+sethandler <C-L> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-Q> a:ide
+sethandler <C-R> a:vim
+sethandler <C-S> a:ide
+sethandler <C-T> a:ide
+sethandler <C-U> a:vim
+sethandler <C-V> a:ide
+sethandler <C-W> a:vim
+sethandler <C-X> a:vim
+sethandler <C-Y> a:vim
