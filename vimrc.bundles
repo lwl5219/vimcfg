@@ -63,6 +63,9 @@ Plug 'vim-scripts/cscope.vim'
 " 快速去行尾空格 [, + <Space>]
 Plug 'bronson/vim-trailing-whitespace'
 
+" 使用 visual 模式下选中的字符进行搜索
+Plug 'bronson/vim-visual-star-search'
+
 " quick movement
 " easymotion
 "更高效的移动 [,, + w/fx/h/j/k/l]
